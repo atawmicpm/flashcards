@@ -24,11 +24,11 @@ class Deck
 end
 
 class Card
-  attr_reader :question, :answer
+  attr_reader :definition, :word
 
   def initialize(card)
-    @question = card[0]
-    @answer = card[1]
+    @definition = card[0]
+    @word = card[1]
   end
 end
 
