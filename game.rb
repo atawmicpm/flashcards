@@ -1,40 +1,7 @@
 require_relative("flashcards.rb")
+require_relative("ui.rb")
 
-module UI
 
-  def welcome
-    puts "Welcome to THE FLASHCARD GAME!"
-  end
-
-  def user_prompt
-    puts "Enter your guess: "
-  end
-
-  def show_word
-    puts @card.word
-  end
-
-  def show_definition
-    puts "Definition:\n#{@card.definition}"
-  end
-
-  def success_message 
-    puts "Great job!"
-  end
-
-  def show_remaining_guesses
-    if @tries > 1
-      puts "Nope! #{@tries} more tries!"
-    else
-      puts "Nope! #{@tries} more try!"
-    end
-  end
-
-  def reveal_answer
-    puts "It was \"#{@card.word}\". You'll get it someday, buddy!\n\n"
-  end
-
-end
 
 class Game
 
@@ -42,7 +9,6 @@ class Game
 
   def initialize(file)
     @new_deck = Deck.new(file) 
-    @tries = 3
   end
 
   def start
@@ -53,6 +19,7 @@ class Game
   end
 
   def play
+    @tries = 3
     @card = @new_deck.get_card
     show_definition
     get_answer
@@ -88,8 +55,6 @@ class Game
     play
   end
 end
-
-
 
 
 
