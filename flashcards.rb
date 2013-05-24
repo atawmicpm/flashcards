@@ -13,7 +13,7 @@ class Deck
   end
 
   def shuffle
-    @deck = @deck.shuffle!
+    @deck.shuffle!
   end
 
   def get_card
@@ -36,8 +36,8 @@ flashcards = Deck.new("flashcard_samples.txt")
 flashcards.create_deck
 flashcards.shuffle
 current_card = flashcards.get_card
-p current_card.question
+puts current_card.question
 puts
-p current_card.answer
+puts current_card.answer
 
 
