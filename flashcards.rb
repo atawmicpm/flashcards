@@ -31,4 +31,8 @@ class Card
     @word = card[1]
   end
 
+  def check_answer(user_answer)
+    user_answer == @word
+  end
+
 end

@@ -1,10 +1,48 @@
 require_relative("flashcards.rb")
 
+module UI
+
+  def welcome
+    puts "Welcome to THE FLASHCARD GAME!"
+  end
+
+  def user_prompt
+    puts "Enter your guess: "
+  end
+
+  def show_word
+    puts @card.word
+  end
+
+  def show_definition
+    puts "Definition:\n#{@card.definition}"
+  end
+
+  def success_message 
+    puts "Great job!"
+  end
+
+  def show_remaining_guesses
+    if @tries > 1
+      puts "Nope! #{@tries} more tries!"
+    else
+      puts "Nope! #{@tries} more try!"
+    end
+  end
+
+  def reveal_answer
+    puts "It was \"#{@card.word}\". You'll get it someday, buddy!\n\n"
+  end
+
+end
+
 class Game
+
+  include UI
 
   def initialize(file)
     @new_deck = Deck.new(file) 
-    @tries = 4
+    @tries = 3
   end
 
   def start
@@ -20,24 +58,8 @@ class Game
     get_answer
   end
 
-  def welcome
-    puts "Welcome to the FLASHCARD GAME"
-  end
-
   def exit
     exit
-  end
-
-  def user_prompt
-    puts "Enter your guess: "
-  end
-
-  def show_word
-    puts @card.word
-  end
-
-  def show_definition
-    puts @card.definition 
   end
 
   def get_answer
@@ -54,28 +76,20 @@ class Game
     if @user_answer == @card.word
       success_message
     else
-      unless @tries < 2
-        failure_message
+      unless @tries < 1
+        show_remaining_guesses
         track_tries
-        puts "YOU HAVE THREE GUESSES. Remaining tries: #{@tries}."
         get_answer
       end
     end 
-    if @tries == 1 
-      puts "It was #{@card.word}. You'll get it someday, buddy!\n"
+    if @tries == 0 
+      reveal_answer
     end
     play
   end
-
-  def success_message 
-    puts "Great job!"
-  end
-
-  def failure_message
-    puts "Bummer. Try again?"
-  end
-
 end
+
+
 
 
 
