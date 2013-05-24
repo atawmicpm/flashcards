@@ -30,14 +30,5 @@ class Card
     @definition = card[0]
     @word = card[1]
   end
+
 end
-
-flashcards = Deck.new("flashcard_samples.txt")
-flashcards.create_deck
-flashcards.shuffle
-current_card = flashcards.get_card
-puts current_card.question
-puts
-puts current_card.answer
-
-
