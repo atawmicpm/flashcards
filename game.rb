@@ -46,10 +46,9 @@ class Game
       failure_message
       track_fail
     else 
-      "You'll get that someday, buddy!"
-      show_word
+      "It was #{show_word}. You'll get it someday, buddy!"
     end
-
+    @deck.get_card
   end
 
   def success_message 
